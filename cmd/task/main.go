@@ -11,6 +11,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/go-kit/kit/log/level"
 	"github.com/ichandxyx/task/pkg/store"
+	"github.com/ichandxyx/task/pkg/api"
 )
 
 func main() {
@@ -24,8 +25,12 @@ func main() {
 
 	}
 	level.Info(logger).Log("msg", "successfully connected to database")
+	if err := client.Schema.Create(context.Background()); err != nil {
+		level.Error(logger).Log("msg", "auto migration", "err", err)
+	}
+
 	st:=store.New(client)
-	ap:=api.New(st,log.With(logger,"component","api"))
+	ap:=api.New(st, log.With(logger, "component", "api"))
 	r:=chi.NewRouter()
 	r.Route("/api",func(r chi.Router){
 		ap.Register(r)
