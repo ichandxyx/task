@@ -1,7 +1,8 @@
 package store
 
 import (
-	"entgo.io/ent/entc/integration/multischema/ent"
+	"github.com/ichandxyx/task/ent"
+
 )
 
 type Storage struct {
