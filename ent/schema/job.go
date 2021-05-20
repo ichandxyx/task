@@ -4,9 +4,8 @@ import (
 	"time"
 
 	"entgo.io/ent"
-	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/edge"
-
+	"entgo.io/ent/schema/field"
 )
 
 // Job holds the schema definition for the Job entity.
@@ -23,11 +22,9 @@ func (Job) Fields() []ent.Field {
 	}
 }
 
-
 // Edges of the Job.
 func (Job) Edges() []ent.Edge {
 	return []ent.Edge{
-        edge.To("visits", Visit.Type),
-    }
+		edge.To("visits", Visit.Type),
+	}
 }
-

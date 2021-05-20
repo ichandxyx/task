@@ -1,9 +1,9 @@
 package schema
 
-import ( 
+import (
 	"entgo.io/ent"
-	"entgo.io/ent/schema/field"
 	"entgo.io/ent/schema/edge"
+	"entgo.io/ent/schema/field"
 )
 
 // Visit holds the schema definition for the Visit entity.
@@ -25,8 +25,8 @@ func (Visit) Fields() []ent.Field {
 // Edges of the Visit.
 func (Visit) Edges() []ent.Edge {
 	return []ent.Edge{
-        edge.From("job", Job.Type).
-            Ref("visits").
-            Unique(),
-    }
+		edge.From("job", Job.Type).
+			Ref("visits").
+			Unique(),
+	}
 }
