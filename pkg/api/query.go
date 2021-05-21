@@ -89,10 +89,8 @@ func (a *API) handleVisits(w http.ResponseWriter, r *http.Request) {
 	qr.StartDate,_=time.Parse(time.RFC3339,r.URL.Query().Get("startdate"))
 	qr.EndDate,_=time.Parse(time.RFC3339,r.URL.Query().Get("enddate"))
 	
-	res, err := a.store.GetVisits(r.Context(), qr.Area,qr.StartDate,qr.EndDate)
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-	}
+	res:= a.store.GetVisits(r.Context(), qr.Area,qr.StartDate,qr.EndDate)
+	
 	json.NewEncoder(w).Encode(&res)
 
 }
