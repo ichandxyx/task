@@ -91,6 +91,9 @@ func (a *API) handleVisits(w http.ResponseWriter, r *http.Request) {
 	
 	res:= a.store.GetVisits(r.Context(), qr.Area,qr.StartDate,qr.EndDate)
 	
-	json.NewEncoder(w).Encode(&res)
+	//json.NewEncoder(w).Encode(&res)
+	for _,i:=range res{
+		print(i.Store_name)
+	}
 
 }

@@ -7,5 +7,5 @@ import (
 func (a *API) registerRoutes(r chi.Router) {
 	r.Get("/status", a.handleStatus)
 	r.Post("/submit", a.handleSubmit)
-	//r.Get("/visits", a.handleVisits)
+	r.Get("/visits", a.handleVisits)
 }
